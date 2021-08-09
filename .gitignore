@@ -332,3 +332,7 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+*.cs
+*.csproj
+*.csproj
+TopFilms/Controllers/WeatherForecastController.cs

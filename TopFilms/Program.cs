@@ -6,13 +6,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TopFilms.Data;
+using TopFilms.Models;
 
 namespace TopFilms
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
+            using TopFilmsContext context = new TopFilmsContext();
+            
+        //Films theGodFather = new Films()
+        //    {
+
+        //    };
+
             CreateHostBuilder(args).Build().Run();
         }
 
