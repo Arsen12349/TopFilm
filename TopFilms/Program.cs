@@ -13,15 +13,8 @@ namespace TopFilms
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            using TopFilmsContext context = new TopFilmsContext();
-            
-        //Films theGodFather = new Films()
-        //    {
-
-        //    };
-
             CreateHostBuilder(args).Build().Run();
         }
 
