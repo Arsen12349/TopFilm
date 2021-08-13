@@ -10,8 +10,6 @@ namespace TopFilms.Dtos
 {
     public class FilmsCreateDto
     {
-        public int Id { get; set; }
-
         public string NameFilm { get; set; }
 
         public int YearFilm { get; set; }
