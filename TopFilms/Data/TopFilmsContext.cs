@@ -16,12 +16,7 @@ namespace TopFilms.Data
         
         }
         
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-        //{
-        //    optionsBuilder.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = TopFilms; Trusted_Connection = True;");
-            
-        //}
-        
+
         public DbSet<Films> Films { get; set; }
     }
 

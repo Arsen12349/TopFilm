@@ -23,7 +23,7 @@ namespace TopFilms.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", value: SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AboutFilm")
                         .IsRequired()

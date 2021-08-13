@@ -9,8 +9,8 @@ using TopFilms.Data;
 namespace TopFilms.Migrations
 {
     [DbContext(typeof(TopFilmsContext))]
-    [Migration("20210809202245_FourthVersion")]
-    partial class FourthVersion
+    [Migration("20210813042841_Finaly")]
+    partial class Finaly
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

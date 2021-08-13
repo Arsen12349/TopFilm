@@ -2,7 +2,7 @@
 
 namespace TopFilms.Migrations
 {
-    public partial class FourthVersion : Migration
+    public partial class Finaly : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
