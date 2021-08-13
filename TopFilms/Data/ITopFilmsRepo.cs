@@ -8,7 +8,10 @@ namespace TopFilms.Data
 {
     public interface ITopFilmsRepo
     {
+        bool SaveChanges();
+
         IEnumerable<Films> GetAllCommands();
         Films GetCommandById(int id);
+        void CreateCommand(Films cmd);
     }
 }

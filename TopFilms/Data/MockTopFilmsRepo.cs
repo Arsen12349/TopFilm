@@ -8,12 +8,7 @@ namespace TopFilms.Data
 {
     public class MockTopFilmsRepo : ITopFilmsRepo
     {
-        public Films GetCommandById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Films> GetCommands()
+        public void CreateCommand(Films cmd)
         {
             throw new NotImplementedException();
         }
@@ -23,7 +18,12 @@ namespace TopFilms.Data
             throw new NotImplementedException();
         }
 
-        internal object GetAppCommands()
+        public Films GetCommandById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveChanges()
         {
             throw new NotImplementedException();
         }
