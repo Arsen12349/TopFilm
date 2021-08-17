@@ -27,5 +27,10 @@ namespace TopFilms.Data
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateCommand(Films cmd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

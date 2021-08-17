@@ -13,5 +13,6 @@ namespace TopFilms.Data
         IEnumerable<Films> GetAllCommands();
         Films GetCommandById(int id);
         void CreateCommand(Films cmd);
+        void UpdateCommand(Films cmd);
     }
 }
