@@ -9,16 +9,15 @@ using TopFilms.Dtos;
 using TopFilms.Models;
 
 namespace TopFilms.Controllers
-{
-    
+{  
     [Route("api/commands")]
     [ApiController]
-    public class CommandsController : ControllerBase
+    public class FilmsController : ControllerBase
     {
         private readonly ITopFilmsRepo _repository;
         private readonly IMapper _mapper;
 
-        public CommandsController(ITopFilmsRepo repository, IMapper mapper) 
+        public FilmsController(ITopFilmsRepo repository, IMapper mapper) 
         {
             _repository = repository;
             _mapper = mapper;
@@ -43,6 +42,19 @@ namespace TopFilms.Controllers
                 return Ok(_mapper.Map<FilmsReadDto>(commandItem));
             }
             return NotFound();
+        }
+
+        //POST api/commands/{id}
+        [HttpPost]
+        public ActionResult <FilmsReadDto> CreateCommand(FilmsCreateDto filmsCreateDto) 
+        {
+            var commandModel = _mapper.Map<Films>(filmsCreateDto);
+            _repository.CreateCommand(commandModel);
+            _repository.SaveChanges();
+
+            var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
+
+            return Ok(filmsReadDto);
         }
     }
 }

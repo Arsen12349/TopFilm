@@ -11,7 +11,7 @@ namespace TopFilms.Models
     public class Films
     {
         [Key]
-        [Required]
+        //[Required]
         public int Id { get; set; }
 
         [Required]

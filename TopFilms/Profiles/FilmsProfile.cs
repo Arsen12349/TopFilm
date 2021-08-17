@@ -8,9 +8,9 @@ using TopFilms.Models;
 
 namespace TopFilms.Profiles
 {
-    public class CommandsProfile : Profile
+    public class FilmsProfile : Profile
     {
-        public CommandsProfile() 
+        public FilmsProfile() 
         {
             CreateMap<Films, FilmsReadDto>();
         }
