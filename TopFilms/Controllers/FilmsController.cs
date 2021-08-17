@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TopFilms.Data;
 using TopFilms.Dtos;
 using TopFilms.Models;
@@ -33,7 +30,7 @@ namespace TopFilms.Controllers
         }
 
         //GET api/commands/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCommandById")]
         public ActionResult <FilmsReadDto> GetCommandById(int id) 
         {
             var commandItem = _repository.GetCommandById(id);
@@ -54,7 +51,8 @@ namespace TopFilms.Controllers
 
             var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
 
-            return Ok(filmsReadDto);
+            return CreatedAtRoute(nameof(GetCommandById), new { Id = filmsReadDto.Id }, filmsReadDto);
+            //return Ok(filmsReadDto);
         }
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-
-namespace TopFilms.Dtos
+﻿namespace TopFilms.Dtos
 {
     public class FilmsReadDto
     {
@@ -25,5 +17,7 @@ namespace TopFilms.Dtos
         public string Director { get; set; }
 
         public string Genres { get; set; }
+
+        public string Team { get; set; }
     }
 }
