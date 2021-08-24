@@ -4,7 +4,7 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public class MockTopFilmsRepo : ITopFilmsRepo
+    public class MockFilmsRepo : IFilmsRepo
     {
         public void CreateCommand(Films cmd)
         {

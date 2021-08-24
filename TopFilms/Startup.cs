@@ -30,10 +30,9 @@ namespace TopFilms
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();        
             });
 
-
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<ITopFilmsRepo, SqlTopFilmsRepo>();
+            services.AddScoped<IFilmsRepo, SqlFilmsRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

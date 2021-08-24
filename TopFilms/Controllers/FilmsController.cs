@@ -12,12 +12,12 @@ namespace TopFilms.Controllers
     [ApiController]
     public class FilmsController : ControllerBase
     {
-        private readonly ITopFilmsRepo _repository;
+        private readonly IFilmsRepo _filmsRepository;
         private readonly IMapper _mapper;
 
-        public FilmsController(ITopFilmsRepo repository, IMapper mapper) 
+        public FilmsController(IFilmsRepo repository, IMapper mapper) 
         {
-            _repository = repository;
+            _filmsRepository = repository;
             _mapper = mapper;
         }
        
@@ -25,7 +25,7 @@ namespace TopFilms.Controllers
         [HttpGet]
         public ActionResult <IEnumerable<FilmsReadDto>> GetAllCommands() 
         {
-            var commandItems = _repository.GetAllCommands();
+            var commandItems = _filmsRepository.GetAllCommands();
 
             return Ok(_mapper.Map<IEnumerable<FilmsReadDto>>(commandItems));
         }
@@ -34,7 +34,7 @@ namespace TopFilms.Controllers
         [HttpGet("{id}", Name = "GetCommandById")]
         public ActionResult <FilmsReadDto> GetCommandById(int id) 
         {
-            var commandItem = _repository.GetCommandById(id);
+            var commandItem = _filmsRepository.GetCommandById(id);
             if(commandItem != null) 
             {
                 return Ok(_mapper.Map<FilmsReadDto>(commandItem));
@@ -47,8 +47,8 @@ namespace TopFilms.Controllers
         public ActionResult <FilmsReadDto> CreateCommand(FilmsCreateDto filmsCreateDto) 
         {
             var commandModel = _mapper.Map<Films>(filmsCreateDto);
-            _repository.CreateCommand(commandModel);
-            _repository.SaveChanges();
+            _filmsRepository.CreateCommand(commandModel);
+            _filmsRepository.SaveChanges();
 
             var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
 
@@ -60,16 +60,16 @@ namespace TopFilms.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateCommand(int id, FilmsUpdateDto filmsUpdateDto) 
         {
-            var commandModelFromRepo = _repository.GetCommandById(id);
+            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
             if(commandModelFromRepo == null) 
             {
                 return NotFound();
             }
             _mapper.Map(filmsUpdateDto, commandModelFromRepo);
 
-            _repository.UpdateCommand(commandModelFromRepo);
+            _filmsRepository.UpdateCommand(commandModelFromRepo);
 
-            _repository.SaveChanges();
+            _filmsRepository.SaveChanges();
 
             return NoContent();
         }
@@ -78,7 +78,7 @@ namespace TopFilms.Controllers
         [HttpPatch("{id}")]
         public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<FilmsUpdateDto> patchDoc) 
         {
-            var commandModelFromRepo = _repository.GetCommandById(id);
+            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
@@ -94,9 +94,9 @@ namespace TopFilms.Controllers
 
             _mapper.Map(commandToPatch, commandModelFromRepo);
 
-            _repository.UpdateCommand(commandModelFromRepo);
+            _filmsRepository.UpdateCommand(commandModelFromRepo);
 
-            _repository.SaveChanges();
+            _filmsRepository.SaveChanges();
 
             return NoContent();
         }
@@ -105,15 +105,15 @@ namespace TopFilms.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteCommand(int id) 
         {
-            var commandModelFromRepo = _repository.GetCommandById(id);
+            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
             }
 
-            _repository.DeleteCommand(commandModelFromRepo);
+            _filmsRepository.DeleteCommand(commandModelFromRepo);
 
-            _repository.SaveChanges();
+            _filmsRepository.SaveChanges();
 
             return NoContent();
         }
