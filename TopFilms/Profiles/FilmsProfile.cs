@@ -11,6 +11,8 @@ namespace TopFilms.Profiles
             //Source -> Target
             CreateMap<Films, FilmsReadDto>();
             CreateMap<FilmsCreateDto, Films>();
+            CreateMap<FilmsUpdateDto, Films>();
+            CreateMap<Films, FilmsUpdateDto>();
         }
     }
 }

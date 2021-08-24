@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TopFilms.Models;
 
 namespace TopFilms.Data
@@ -9,6 +7,11 @@ namespace TopFilms.Data
     public class MockTopFilmsRepo : ITopFilmsRepo
     {
         public void CreateCommand(Films cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCommand(Films cmd)
         {
             throw new NotImplementedException();
         }

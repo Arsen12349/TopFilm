@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TopFilms.Models;
 
 namespace TopFilms.Data
@@ -23,6 +22,15 @@ namespace TopFilms.Data
             }
 
             _context.Films.Add(cmd);
+        }
+
+        public void DeleteCommand(Films cmd)
+        {
+            if (cmd == null) 
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _context.Films.Remove(cmd);
         }
 
         public IEnumerable<Films> GetAllCommands()

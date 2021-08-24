@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TopFilms.Models;
 
 namespace TopFilms.Data
@@ -14,5 +11,6 @@ namespace TopFilms.Data
         Films GetCommandById(int id);
         void CreateCommand(Films cmd);
         void UpdateCommand(Films cmd);
+        void DeleteCommand(Films cmd);
     }
 }
