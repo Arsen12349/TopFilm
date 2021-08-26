@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TopFilms.Models
+namespace TopFilms.Dtos
 {
-
-    public class Team
+    public class TeamUpdateDto
     {
-        public int Id { get; set; }
-
         [Required]
         public string NamePerson { get; set; }
 
@@ -15,6 +12,5 @@ namespace TopFilms.Models
 
         [Required]
         public string AboutPerson { get; set; }
-
     }
 }

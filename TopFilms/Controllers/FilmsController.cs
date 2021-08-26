@@ -12,29 +12,29 @@ namespace TopFilms.Controllers
     [ApiController]
     public class FilmsController : ControllerBase
     {
-        private readonly IFilmsRepo _filmsRepository;
+        private readonly IFilmsRepo _repository;
         private readonly IMapper _mapper;
 
         public FilmsController(IFilmsRepo repository, IMapper mapper) 
         {
-            _filmsRepository = repository;
+            _repository = repository;
             _mapper = mapper;
         }
        
         //GET api/commands
         [HttpGet]
-        public ActionResult <IEnumerable<FilmsReadDto>> GetAllCommands() 
+        public ActionResult <IEnumerable<FilmsReadDto>> GetAll() 
         {
-            var commandItems = _filmsRepository.GetAllCommands();
+            var commandItems = _repository.GetAll();
 
             return Ok(_mapper.Map<IEnumerable<FilmsReadDto>>(commandItems));
         }
 
         //GET api/commands/{id}
-        [HttpGet("{id}", Name = "GetCommandById")]
-        public ActionResult <FilmsReadDto> GetCommandById(int id) 
+        [HttpGet("{id}", Name = "GetId")]
+        public ActionResult <FilmsReadDto> GetId(int id) 
         {
-            var commandItem = _filmsRepository.GetCommandById(id);
+            var commandItem = _repository.GetId(id);
             if(commandItem != null) 
             {
                 return Ok(_mapper.Map<FilmsReadDto>(commandItem));
@@ -44,41 +44,40 @@ namespace TopFilms.Controllers
 
         //POST api/commands/{id}
         [HttpPost]
-        public ActionResult <FilmsReadDto> CreateCommand(FilmsCreateDto filmsCreateDto) 
+        public ActionResult <FilmsReadDto> Create(FilmsCreateDto filmsCreateDto) 
         {
             var commandModel = _mapper.Map<Films>(filmsCreateDto);
-            _filmsRepository.CreateCommand(commandModel);
-            _filmsRepository.SaveChanges();
+            _repository.Create(commandModel);
+            _repository.SaveChanges();
 
             var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
 
-            return CreatedAtRoute(nameof(GetCommandById), new { Id = filmsReadDto.Id }, filmsReadDto);
-            //return Ok(filmsReadDto);
+            return CreatedAtRoute(nameof(GetId), new { Id = filmsReadDto.Id }, filmsReadDto);
         }
 
         //PUT api/commands/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateCommand(int id, FilmsUpdateDto filmsUpdateDto) 
+        public ActionResult Update(int id, FilmsUpdateDto filmsUpdateDto) 
         {
-            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
+            var commandModelFromRepo = _repository.GetId(id);
             if(commandModelFromRepo == null) 
             {
                 return NotFound();
             }
             _mapper.Map(filmsUpdateDto, commandModelFromRepo);
 
-            _filmsRepository.UpdateCommand(commandModelFromRepo);
+            _repository.Update(commandModelFromRepo);
 
-            _filmsRepository.SaveChanges();
+            _repository.SaveChanges();
 
             return NoContent();
         }
 
         //PATCH api/commands/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<FilmsUpdateDto> patchDoc) 
+        public ActionResult PartialUpdate(int id, JsonPatchDocument<FilmsUpdateDto> patchDoc) 
         {
-            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
+            var commandModelFromRepo = _repository.GetId(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
@@ -94,26 +93,26 @@ namespace TopFilms.Controllers
 
             _mapper.Map(commandToPatch, commandModelFromRepo);
 
-            _filmsRepository.UpdateCommand(commandModelFromRepo);
+            _repository.Update(commandModelFromRepo);
 
-            _filmsRepository.SaveChanges();
+            _repository.SaveChanges();
 
             return NoContent();
         }
 
         //DELETE api/commands/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteCommand(int id) 
+        public ActionResult Delete(int id) 
         {
-            var commandModelFromRepo = _filmsRepository.GetCommandById(id);
+            var commandModelFromRepo = _repository.GetId(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
             }
 
-            _filmsRepository.DeleteCommand(commandModelFromRepo);
+            _repository.Delete(commandModelFromRepo);
 
-            _filmsRepository.SaveChanges();
+            _repository.SaveChanges();
 
             return NoContent();
         }

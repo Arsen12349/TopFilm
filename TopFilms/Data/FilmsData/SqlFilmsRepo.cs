@@ -5,40 +5,40 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public class SqlTopFilmsRepo : ITopFilmsRepo
+    public class SqlFilmsRepo : IFilmsRepo
     {
         private readonly TopFilmsContext _context;
 
-        public SqlTopFilmsRepo(TopFilmsContext context) 
+        public SqlFilmsRepo(TopFilmsContext context) 
         {
             _context = context;
         }
 
-        public void CreateCommand(Films cmd)
+        public void Create(Films cmd)
         {
-            if(cmd == null) 
+            if (cmd == null)
             {
-                throw new ArgumentNullException(nameof(cmd));           
+                throw new ArgumentNullException(nameof(cmd));
             }
 
             _context.Films.Add(cmd);
         }
 
-        public void DeleteCommand(Films cmd)
+        public void Delete(Films cmd)
         {
-            if (cmd == null) 
+            if (cmd == null)
             {
                 throw new ArgumentNullException(nameof(cmd));
             }
             _context.Films.Remove(cmd);
         }
 
-        public IEnumerable<Films> GetAllCommands()
+        public IEnumerable<Films> GetAll()
         {
             return _context.Films.ToList();
         }
 
-        public Films GetCommandById(int id)
+        public Films GetId(int id)
         {
             return _context.Films.FirstOrDefault(p => p.Id == id);
         }
@@ -48,7 +48,7 @@ namespace TopFilms.Data
             return (_context.SaveChanges() >= 0);
         }
 
-        public void UpdateCommand(Films cmd)
+        public void Update(Films cmd)
         {
             //Nothing
         }

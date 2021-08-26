@@ -30,6 +30,8 @@ namespace TopFilms.Models
         public string Genres { get; set; }
 
         [Required]
-        public string Team { get; set; }       
+        public string Team { get; set; }   
+        
+
     }
 }
