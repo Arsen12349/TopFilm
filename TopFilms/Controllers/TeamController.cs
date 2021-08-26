@@ -8,7 +8,7 @@ using TopFilms.Models;
 
 namespace TopFilms.Controllers
 {
-    [Route("api/commands")]
+    [Route("api/team")]
     [ApiController]
     public class TeamController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace TopFilms.Controllers
             _mapper = mapper;
         }
 
-        //GET api/commands
+        //GET api/team
         [HttpGet]
         public ActionResult<IEnumerable<TeamReadDto>> GetAll()
         {
@@ -30,7 +30,7 @@ namespace TopFilms.Controllers
             return Ok(_mapper.Map<IEnumerable<TeamReadDto>>(commandItems));
         }
 
-        //GET api/commands/{id}
+        //GET api/team/{id}
         [HttpGet("{id}", Name = "GetId")]
         public ActionResult<TeamReadDto> GetId(int id)
         {
@@ -42,7 +42,7 @@ namespace TopFilms.Controllers
             return NotFound();
         }
 
-        //POST api/commands/{id}
+        //POST api/team/{id}
         [HttpPost]
         public ActionResult<TeamReadDto> Create(TeamCreateDto teamCreateDto)
         {
@@ -55,7 +55,7 @@ namespace TopFilms.Controllers
             return CreatedAtRoute(nameof(GetId), new { Id = teamReadDto.Id }, teamReadDto);
         }
 
-        //PUT api/commands/{id}
+        //PUT api/team/{id}
         [HttpPut("{id}")]
         public ActionResult Update(int id, TeamUpdateDto teamUpdateDto)
         {
@@ -73,7 +73,7 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //PATCH api/commands/{id}
+        //PATCH api/team/{id}
         [HttpPatch("{id}")]
         public ActionResult PartialUpdate(int id, JsonPatchDocument<TeamUpdateDto> patchDoc)
         {
@@ -100,7 +100,7 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //DELETE api/commands/{id}
+        //DELETE api/team/{id}
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

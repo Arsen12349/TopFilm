@@ -38,7 +38,7 @@ namespace TopFilms.Data
             return _context.Films.ToList();
         }
 
-        public Films GetId(int id)
+        public Films GetFilmId(int id)
         {
             return _context.Films.FirstOrDefault(p => p.Id == id);
         }

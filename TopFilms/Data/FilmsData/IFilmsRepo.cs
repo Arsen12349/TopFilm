@@ -8,7 +8,7 @@ namespace TopFilms.Data
         bool SaveChanges();
 
         IEnumerable<Films> GetAll();
-        Films GetId(int id);
+        Films GetFilmId(int id);
         void Create(Films cmd);
         void Update(Films cmd);
         void Delete(Films cmd);

@@ -8,7 +8,7 @@ using TopFilms.Models;
 
 namespace TopFilms.Controllers
 {  
-    [Route("api/commands")]
+    [Route("api/films")]
     [ApiController]
     public class FilmsController : ControllerBase
     {
@@ -20,8 +20,8 @@ namespace TopFilms.Controllers
             _repository = repository;
             _mapper = mapper;
         }
-       
-        //GET api/commands
+
+        //GET api/films
         [HttpGet]
         public ActionResult <IEnumerable<FilmsReadDto>> GetAll() 
         {
@@ -30,11 +30,11 @@ namespace TopFilms.Controllers
             return Ok(_mapper.Map<IEnumerable<FilmsReadDto>>(commandItems));
         }
 
-        //GET api/commands/{id}
-        [HttpGet("{id}", Name = "GetId")]
-        public ActionResult <FilmsReadDto> GetId(int id) 
+        //GET api/films/{id}
+        [HttpGet("{id}", Name = "GetFilmId")]
+        public ActionResult <FilmsReadDto> GetFilmId(int id) 
         {
-            var commandItem = _repository.GetId(id);
+            var commandItem = _repository.GetFilmId(id);
             if(commandItem != null) 
             {
                 return Ok(_mapper.Map<FilmsReadDto>(commandItem));
@@ -42,7 +42,7 @@ namespace TopFilms.Controllers
             return NotFound();
         }
 
-        //POST api/commands/{id}
+        //POST api/films/{id}
         [HttpPost]
         public ActionResult <FilmsReadDto> Create(FilmsCreateDto filmsCreateDto) 
         {
@@ -52,14 +52,14 @@ namespace TopFilms.Controllers
 
             var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
 
-            return CreatedAtRoute(nameof(GetId), new { Id = filmsReadDto.Id }, filmsReadDto);
+            return CreatedAtRoute(nameof(GetFilmId), new { Id = filmsReadDto.Id }, filmsReadDto);
         }
 
-        //PUT api/commands/{id}
+        //PUT api/films/{id}
         [HttpPut("{id}")]
         public ActionResult Update(int id, FilmsUpdateDto filmsUpdateDto) 
         {
-            var commandModelFromRepo = _repository.GetId(id);
+            var commandModelFromRepo = _repository.GetFilmId(id);
             if(commandModelFromRepo == null) 
             {
                 return NotFound();
@@ -73,11 +73,11 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //PATCH api/commands/{id}
+        //PATCH api/films/{id}
         [HttpPatch("{id}")]
         public ActionResult PartialUpdate(int id, JsonPatchDocument<FilmsUpdateDto> patchDoc) 
         {
-            var commandModelFromRepo = _repository.GetId(id);
+            var commandModelFromRepo = _repository.GetFilmId(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
@@ -100,11 +100,11 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //DELETE api/commands/{id}
+        //DELETE api/films/{id}
         [HttpDelete("{id}")]
         public ActionResult Delete(int id) 
         {
-            var commandModelFromRepo = _repository.GetId(id);
+            var commandModelFromRepo = _repository.GetFilmId(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();

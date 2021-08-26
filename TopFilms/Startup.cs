@@ -33,6 +33,8 @@ namespace TopFilms
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IFilmsRepo, SqlFilmsRepo>();
+            services.AddScoped<ITeamRepo, SqlTeamRepo>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
