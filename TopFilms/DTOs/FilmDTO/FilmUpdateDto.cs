@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using TopFilms.DTOs.ActorDTO;
 
 namespace TopFilms.Dtos
 {
@@ -25,6 +27,6 @@ namespace TopFilms.Dtos
         [Required]
         public int DirectorId { get; set; }
 
-        public IList<ActorDTO> Actors { get; set; }
+        public IList<ActorUpdateDto> Actors { get; set; }
     }
 }

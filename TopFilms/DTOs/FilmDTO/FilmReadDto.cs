@@ -1,4 +1,7 @@
-﻿namespace TopFilms.Dtos
+﻿using System.Collections.Generic;
+using TopFilms.DTOs.ActorDTO;
+
+namespace TopFilms.Dtos
 {
     public class FilmReadDto
     {
@@ -18,6 +21,6 @@
 
         public int DirectorId { get; set; }
 
-        public IList<ActorDTO> Actors { get; set; }
+        public IList<ActorReadDto> Actors { get; set; }
     }
 }

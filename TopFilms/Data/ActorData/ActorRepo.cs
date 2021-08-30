@@ -28,17 +28,17 @@ namespace TopFilms.Data
             {
                 throw new ArgumentNullException(nameof(cmd));
             }
-            _context.Actor.Remove(cmd);
+            _context.Actors.Remove(cmd);
         }
 
         public IEnumerable<Actor> GetAll()
         {
-            return _context.Actor.ToList();
+            return _context.Actors.ToList();
         }
 
         public Actor GetId(int id)
         {
-            return _context.Actor.FirstOrDefault(p => p.Id == id);
+            return _context.Actors.FirstOrDefault(p => p.Id == id);
         }
 
         public bool SaveChanges()

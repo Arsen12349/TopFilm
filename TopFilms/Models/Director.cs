@@ -4,6 +4,7 @@ namespace TopFilms.Models
 {
     public class Director
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

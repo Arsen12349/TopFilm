@@ -24,13 +24,13 @@ namespace TopFilms.Models
         public int Gross { get; set; }
 
         [Required]
-        public string Genres { get; set; }
+        public string Genres { get; set; } // can be [enum], how to do this ?
 
         [Required]
         public int DirectorId { get; set; }
 
         public Director Director { get; set; }
 
-        public virtual ICollection<Actor> Actors { get; set; }
+        public virtual ICollection <Actor> Actors { get; set; }
     }
 }
