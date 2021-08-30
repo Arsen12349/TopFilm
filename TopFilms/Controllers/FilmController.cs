@@ -10,12 +10,12 @@ namespace TopFilms.Controllers
 {  
     [Route("api/films")]
     [ApiController]
-    public class FilmsController : ControllerBase
+    public class FilmController : ControllerBase
     {
         private readonly IFilmRepo _repository;
         private readonly IMapper _mapper;
 
-        public FilmsController(IFilmRepo repository, IMapper mapper) 
+        public FilmController(IFilmRepo repository, IMapper mapper) 
         {
             _repository = repository;
             _mapper = mapper;

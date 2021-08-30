@@ -8,20 +8,20 @@ using TopFilms.Models;
 
 namespace TopFilms.Controllers
 {
-    [Route("api/team")]
+    [Route("api/director")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class DirectorController : ControllerBase
     {
-        private readonly IActorRepo _repository;
+        private readonly IDirectorRepo _repository;
         private readonly IMapper _mapper;
 
-        public TeamController(IActorRepo repository, IMapper mapper)
+        public DirectorController(IDirectorRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        //GET api/team
+        //GET api/director
         [HttpGet]
         public ActionResult<IEnumerable<DirectorReadDto>> GetAll()
         {
@@ -30,7 +30,7 @@ namespace TopFilms.Controllers
             return Ok(_mapper.Map<IEnumerable<DirectorReadDto>>(commandItems));
         }
 
-        //GET api/team/{id}
+        //GET api/director/{id}
         [HttpGet("{id}", Name = "GetId")]
         public ActionResult<DirectorReadDto> GetId(int id)
         {
@@ -42,29 +42,29 @@ namespace TopFilms.Controllers
             return NotFound();
         }
 
-        //POST api/team/{id}
+        //POST api/director/{id}
         [HttpPost]
-        public ActionResult<DirectorReadDto> Create(DirectorCreateDto teamCreateDto)
+        public ActionResult<DirectorReadDto> Create(DirectorCreateDto directorCreateDto)
         {
-            var commandModel = _mapper.Map<Actor>(teamCreateDto);
+            var commandModel = _mapper.Map<Director>(directorCreateDto);
             _repository.Create(commandModel);
             _repository.SaveChanges();
 
-            var teamReadDto = _mapper.Map<DirectorReadDto>(commandModel);
+            var directorReadDto = _mapper.Map<DirectorReadDto>(commandModel);
 
-            return CreatedAtRoute(nameof(GetId), new { Id = teamReadDto.Id }, teamReadDto);
+            return CreatedAtRoute(nameof(GetId), new { Id = directorReadDto.Id }, directorReadDto);
         }
 
-        //PUT api/team/{id}
+        //PUT api/director/{id}
         [HttpPut("{id}")]
-        public ActionResult Update(int id, DirectorUpdateDto teamUpdateDto)
+        public ActionResult Update(int id, DirectorUpdateDto directorUpdateDto)
         {
             var commandModelFromRepo = _repository.GetId(id);
             if (commandModelFromRepo == null)
             {
                 return NotFound();
             }
-            _mapper.Map(teamUpdateDto, commandModelFromRepo);
+            _mapper.Map(directorUpdateDto, commandModelFromRepo);
 
             _repository.Update(commandModelFromRepo);
 
@@ -73,7 +73,7 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //PATCH api/team/{id}
+        //PATCH api/director/{id}
         [HttpPatch("{id}")]
         public ActionResult PartialUpdate(int id, JsonPatchDocument<DirectorUpdateDto> patchDoc)
         {
@@ -100,7 +100,7 @@ namespace TopFilms.Controllers
             return NoContent();
         }
 
-        //DELETE api/team/{id}
+        //DELETE api/director/{id}
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
