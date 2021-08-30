@@ -3,7 +3,7 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public interface ITeamRepo
+    public interface IActorRepo
     {
         bool SaveChanges();
 

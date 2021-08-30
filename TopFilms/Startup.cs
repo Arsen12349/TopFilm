@@ -32,8 +32,8 @@ namespace TopFilms
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IFilmsRepo, SqlFilmsRepo>();
-            services.AddScoped<ITeamRepo, SqlTeamRepo>();
+            services.AddScoped<IFilmRepo, FilmRepo>();
+            services.AddScoped<IActorRepo, ActorRepo>();
 
         }
 

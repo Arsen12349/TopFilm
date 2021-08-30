@@ -7,13 +7,11 @@ namespace TopFilms.Data
     {
         public DbSet<Film> Films { get; set; }
         public DbSet<Actor> Actor { get; set; }
+        public DbSet<Director> Director { get; set; }
 
         public TopFilmsContext(DbContextOptions<TopFilmsContext> opt) : base(opt) 
         {
         
         }
-
-    }
-
-    
+    }   
 }

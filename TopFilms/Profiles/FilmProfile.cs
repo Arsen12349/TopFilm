@@ -4,9 +4,9 @@ using TopFilms.Models;
 
 namespace TopFilms.Profiles
 {
-    public class FilmsProfile : Profile
+    public class FilmProfile : Profile
     {
-        public FilmsProfile() 
+        public FilmProfile() 
         {
             //Source -> Target
             CreateMap<Film, FilmReadDto>();

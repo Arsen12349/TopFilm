@@ -12,10 +12,10 @@ namespace TopFilms.Controllers
     [ApiController]
     public class FilmsController : ControllerBase
     {
-        private readonly IFilmsRepo _repository;
+        private readonly IFilmRepo _repository;
         private readonly IMapper _mapper;
 
-        public FilmsController(IFilmsRepo repository, IMapper mapper) 
+        public FilmsController(IFilmRepo repository, IMapper mapper) 
         {
             _repository = repository;
             _mapper = mapper;

@@ -26,12 +26,10 @@ namespace TopFilms.Models
         [Required]
         public string Genres { get; set; }
 
-
         [Required]
         public int DirectorId { get; set; }
 
         public Director Director { get; set; }
-
 
         public virtual ICollection<Actor> Actors { get; set; }
     }

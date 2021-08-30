@@ -5,11 +5,11 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public class SqlTeamRepo : ITeamRepo
+    public class ActorRepo : IActorRepo
     {
         private readonly TopFilmsContext _context;
 
-        public SqlTeamRepo(TopFilmsContext context)
+        public ActorRepo(TopFilmsContext context)
         {
             _context = context;
         }
@@ -28,17 +28,17 @@ namespace TopFilms.Data
             {
                 throw new ArgumentNullException(nameof(cmd));
             }
-            _context.Team.Remove(cmd);
+            _context.Actor.Remove(cmd);
         }
 
         public IEnumerable<Actor> GetAll()
         {
-            return _context.Team.ToList();
+            return _context.Actor.ToList();
         }
 
         public Actor GetId(int id)
         {
-            return _context.Team.FirstOrDefault(p => p.Id == id);
+            return _context.Actor.FirstOrDefault(p => p.Id == id);
         }
 
         public bool SaveChanges()

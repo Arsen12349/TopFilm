@@ -5,11 +5,11 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public class SqlFilmsRepo : IFilmsRepo
+    public class FilmRepo : IFilmRepo
     {
         private readonly TopFilmsContext _context;
 
-        public SqlFilmsRepo(TopFilmsContext context) 
+        public FilmRepo(TopFilmsContext context) 
         {
             _context = context;
         }

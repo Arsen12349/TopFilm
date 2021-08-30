@@ -12,10 +12,10 @@ namespace TopFilms.Controllers
     [ApiController]
     public class TeamController : ControllerBase
     {
-        private readonly ITeamRepo _repository;
+        private readonly IActorRepo _repository;
         private readonly IMapper _mapper;
 
-        public TeamController(ITeamRepo repository, IMapper mapper)
+        public TeamController(IActorRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
