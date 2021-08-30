@@ -2,16 +2,16 @@
 
 namespace TopFilms.Dtos
 {
-    public class FilmsCreateDto
+    public class FilmUpdateDto
     {
         [Required]
-        public string NameFilm { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public int YearFilm { get; set; }
+        public int Year { get; set; }
 
         [Required]
-        public string AboutFilm { get; set; }
+        public string About { get; set; }
 
         [Required]
         public int Budget { get; set; }
@@ -20,12 +20,11 @@ namespace TopFilms.Dtos
         public int Gross { get; set; }
 
         [Required]
-        public string Director { get; set; }
-
-        [Required]
         public string Genres { get; set; }
 
         [Required]
-        public string Team { get; set; }
+        public int DirectorId { get; set; }
+
+        public IList<ActorDTO> Actors { get; set; }
     }
 }

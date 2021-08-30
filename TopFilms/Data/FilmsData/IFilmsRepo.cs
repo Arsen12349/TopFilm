@@ -7,10 +7,10 @@ namespace TopFilms.Data
     {
         bool SaveChanges();
 
-        IEnumerable<Films> GetAll();
-        Films GetFilmId(int id);
-        void Create(Films cmd);
-        void Update(Films cmd);
-        void Delete(Films cmd);
+        IEnumerable<Film> GetAll();
+        Film GetFilmId(int id);
+        void Create(Film cmd);
+        void Update(Film cmd);
+        void Delete(Film cmd);
     }
 }

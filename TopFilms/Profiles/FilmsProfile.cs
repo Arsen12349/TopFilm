@@ -9,10 +9,10 @@ namespace TopFilms.Profiles
         public FilmsProfile() 
         {
             //Source -> Target
-            CreateMap<Films, FilmsReadDto>();
-            CreateMap<FilmsCreateDto, Films>();
-            CreateMap<FilmsUpdateDto, Films>();
-            CreateMap<Films, FilmsUpdateDto>();
+            CreateMap<Film, FilmReadDto>();
+            CreateMap<FilmCreateDto, Film>();
+            CreateMap<FilmUpdateDto, Film>();
+            CreateMap<Film, FilmUpdateDto>();
         }
     }
 }

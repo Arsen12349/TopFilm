@@ -23,41 +23,41 @@ namespace TopFilms.Controllers
 
         //GET api/films
         [HttpGet]
-        public ActionResult <IEnumerable<FilmsReadDto>> GetAll() 
+        public ActionResult <IEnumerable<FilmReadDto>> GetAll() 
         {
             var commandItems = _repository.GetAll();
 
-            return Ok(_mapper.Map<IEnumerable<FilmsReadDto>>(commandItems));
+            return Ok(_mapper.Map<IEnumerable<FilmReadDto>>(commandItems));
         }
 
         //GET api/films/{id}
         [HttpGet("{id}", Name = "GetFilmId")]
-        public ActionResult <FilmsReadDto> GetFilmId(int id) 
+        public ActionResult <FilmReadDto> GetFilmId(int id) 
         {
             var commandItem = _repository.GetFilmId(id);
             if(commandItem != null) 
             {
-                return Ok(_mapper.Map<FilmsReadDto>(commandItem));
+                return Ok(_mapper.Map<FilmReadDto>(commandItem));
             }
             return NotFound();
         }
 
         //POST api/films/{id}
         [HttpPost]
-        public ActionResult <FilmsReadDto> Create(FilmsCreateDto filmsCreateDto) 
+        public ActionResult <FilmReadDto> Create(FilmCreateDto filmsCreateDto) 
         {
-            var commandModel = _mapper.Map<Films>(filmsCreateDto);
+            var commandModel = _mapper.Map<Film>(filmsCreateDto);
             _repository.Create(commandModel);
             _repository.SaveChanges();
 
-            var filmsReadDto = _mapper.Map<FilmsReadDto>(commandModel);
+            var filmsReadDto = _mapper.Map<FilmReadDto>(commandModel);
 
             return CreatedAtRoute(nameof(GetFilmId), new { Id = filmsReadDto.Id }, filmsReadDto);
         }
 
         //PUT api/films/{id}
         [HttpPut("{id}")]
-        public ActionResult Update(int id, FilmsUpdateDto filmsUpdateDto) 
+        public ActionResult Update(int id, FilmUpdateDto filmsUpdateDto) 
         {
             var commandModelFromRepo = _repository.GetFilmId(id);
             if(commandModelFromRepo == null) 
@@ -75,7 +75,7 @@ namespace TopFilms.Controllers
 
         //PATCH api/films/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialUpdate(int id, JsonPatchDocument<FilmsUpdateDto> patchDoc) 
+        public ActionResult PartialUpdate(int id, JsonPatchDocument<FilmUpdateDto> patchDoc) 
         {
             var commandModelFromRepo = _repository.GetFilmId(id);
             if (commandModelFromRepo == null)
@@ -83,7 +83,7 @@ namespace TopFilms.Controllers
                 return NotFound();
             }
 
-            var commandToPatch = _mapper.Map<FilmsUpdateDto>(commandModelFromRepo);
+            var commandToPatch = _mapper.Map<FilmUpdateDto>(commandModelFromRepo);
             patchDoc.ApplyTo(commandToPatch, ModelState);
 
             if (!TryValidateModel(commandToPatch)) 

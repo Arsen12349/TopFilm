@@ -23,41 +23,41 @@ namespace TopFilms.Controllers
 
         //GET api/team
         [HttpGet]
-        public ActionResult<IEnumerable<TeamReadDto>> GetAll()
+        public ActionResult<IEnumerable<DirectorReadDto>> GetAll()
         {
             var commandItems = _repository.GetAll();
 
-            return Ok(_mapper.Map<IEnumerable<TeamReadDto>>(commandItems));
+            return Ok(_mapper.Map<IEnumerable<DirectorReadDto>>(commandItems));
         }
 
         //GET api/team/{id}
         [HttpGet("{id}", Name = "GetId")]
-        public ActionResult<TeamReadDto> GetId(int id)
+        public ActionResult<DirectorReadDto> GetId(int id)
         {
             var commandItem = _repository.GetId(id);
             if (commandItem != null)
             {
-                return Ok(_mapper.Map<TeamReadDto>(commandItem));
+                return Ok(_mapper.Map<DirectorReadDto>(commandItem));
             }
             return NotFound();
         }
 
         //POST api/team/{id}
         [HttpPost]
-        public ActionResult<TeamReadDto> Create(TeamCreateDto teamCreateDto)
+        public ActionResult<DirectorReadDto> Create(DirectorCreateDto teamCreateDto)
         {
-            var commandModel = _mapper.Map<Team>(teamCreateDto);
+            var commandModel = _mapper.Map<Actor>(teamCreateDto);
             _repository.Create(commandModel);
             _repository.SaveChanges();
 
-            var teamReadDto = _mapper.Map<TeamReadDto>(commandModel);
+            var teamReadDto = _mapper.Map<DirectorReadDto>(commandModel);
 
             return CreatedAtRoute(nameof(GetId), new { Id = teamReadDto.Id }, teamReadDto);
         }
 
         //PUT api/team/{id}
         [HttpPut("{id}")]
-        public ActionResult Update(int id, TeamUpdateDto teamUpdateDto)
+        public ActionResult Update(int id, DirectorUpdateDto teamUpdateDto)
         {
             var commandModelFromRepo = _repository.GetId(id);
             if (commandModelFromRepo == null)
@@ -75,7 +75,7 @@ namespace TopFilms.Controllers
 
         //PATCH api/team/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialUpdate(int id, JsonPatchDocument<TeamUpdateDto> patchDoc)
+        public ActionResult PartialUpdate(int id, JsonPatchDocument<DirectorUpdateDto> patchDoc)
         {
             var commandModelFromRepo = _repository.GetId(id);
             if (commandModelFromRepo == null)
@@ -83,7 +83,7 @@ namespace TopFilms.Controllers
                 return NotFound();
             }
 
-            var commandToPatch = _mapper.Map<TeamUpdateDto>(commandModelFromRepo);
+            var commandToPatch = _mapper.Map<DirectorUpdateDto>(commandModelFromRepo);
             patchDoc.ApplyTo(commandToPatch, ModelState);
 
             if (!TryValidateModel(commandToPatch))

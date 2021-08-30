@@ -14,7 +14,7 @@ namespace TopFilms.Data
             _context = context;
         }
 
-        public void Create(Team cmd)
+        public void Create(Actor cmd)
         {
             if (cmd == null)
             {
@@ -22,7 +22,7 @@ namespace TopFilms.Data
             }
         }
 
-        public void Delete(Team cmd)
+        public void Delete(Actor cmd)
         {
             if (cmd == null)
             {
@@ -31,12 +31,12 @@ namespace TopFilms.Data
             _context.Team.Remove(cmd);
         }
 
-        public IEnumerable<Team> GetAll()
+        public IEnumerable<Actor> GetAll()
         {
             return _context.Team.ToList();
         }
 
-        public Team GetId(int id)
+        public Actor GetId(int id)
         {
             return _context.Team.FirstOrDefault(p => p.Id == id);
         }
@@ -46,7 +46,7 @@ namespace TopFilms.Data
             return (_context.SaveChanges() >= 0);
         }
 
-        public void Update(Team cmd)
+        public void Update(Actor cmd)
         {
             //Nothing
         }

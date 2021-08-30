@@ -5,8 +5,8 @@ namespace TopFilms.Data
 {
     public class TopFilmsContext : DbContext
     {
-        public DbSet<Films> Films { get; set; }
-        public DbSet<Team> Team { get; set; }
+        public DbSet<Film> Films { get; set; }
+        public DbSet<Actor> Actor { get; set; }
 
         public TopFilmsContext(DbContextOptions<TopFilmsContext> opt) : base(opt) 
         {
