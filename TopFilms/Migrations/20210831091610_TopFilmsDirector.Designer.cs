@@ -9,8 +9,8 @@ using TopFilms.Data;
 namespace TopFilms.Migrations
 {
     [DbContext(typeof(TopFilmsContext))]
-    [Migration("20210830201019_NewMigration")]
-    partial class NewMigration
+    [Migration("20210831091610_TopFilmsDirector")]
+    partial class TopFilmsDirector
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace TopFilms.Migrations
 
             modelBuilder.Entity("TopFilms.Models.Director", b =>
                 {
-                    b.Property<int>("DirectorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -70,7 +70,7 @@ namespace TopFilms.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DirectorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Directors");
                 });

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TopFilms.Data;
 
 namespace TopFilms.Migrations
 {
     [DbContext(typeof(TopFilmsContext))]
-    partial class TopFilmsContextModelSnapshot : ModelSnapshot
+    [Migration("20210831091510_New")]
+    partial class New
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +89,6 @@ namespace TopFilms.Migrations
                     b.Property<int>("Budget")
                         .HasColumnType("int");
 
-                    b.Property<int>("DirectorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Genres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -105,8 +104,6 @@ namespace TopFilms.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DirectorId");
 
                     b.ToTable("Films");
                 });
@@ -124,17 +121,6 @@ namespace TopFilms.Migrations
                         .HasForeignKey("FilmsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TopFilms.Models.Film", b =>
-                {
-                    b.HasOne("TopFilms.Models.Director", "Director")
-                        .WithMany()
-                        .HasForeignKey("DirectorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Director");
                 });
 #pragma warning restore 612, 618
         }

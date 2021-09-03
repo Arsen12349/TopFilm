@@ -21,6 +21,6 @@ namespace TopFilms.Dtos
 
         public int DirectorId { get; set; }
 
-        public IList<ActorReadDto> Actors { get; set; }
+        public IList<ActorDto> Actors { get; set; }
     }
 }

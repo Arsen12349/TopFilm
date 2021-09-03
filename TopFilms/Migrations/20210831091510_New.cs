@@ -2,7 +2,7 @@
 
 namespace TopFilms.Migrations
 {
-    public partial class NewMigration : Migration
+    public partial class New : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,13 +29,6 @@ namespace TopFilms.Migrations
                 table: "Films",
                 newName: "About");
 
-            migrationBuilder.AddColumn<int>(
-                name: "DirectorId",
-                table: "Films",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.CreateTable(
                 name: "Actors",
                 columns: table => new
@@ -54,14 +47,14 @@ namespace TopFilms.Migrations
                 name: "Directors",
                 columns: table => new
                 {
-                    DirectorId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecondName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Directors", x => x.DirectorId);
+                    table.PrimaryKey("PK_Directors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,30 +82,13 @@ namespace TopFilms.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Films_DirectorId",
-                table: "Films",
-                column: "DirectorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ActorFilm_FilmsId",
                 table: "ActorFilm",
                 column: "FilmsId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Films_Directors_DirectorId",
-                table: "Films",
-                column: "DirectorId",
-                principalTable: "Directors",
-                principalColumn: "DirectorId",
-                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Films_Directors_DirectorId",
-                table: "Films");
-
             migrationBuilder.DropTable(
                 name: "ActorFilm");
 
@@ -121,14 +97,6 @@ namespace TopFilms.Migrations
 
             migrationBuilder.DropTable(
                 name: "Actors");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Films_DirectorId",
-                table: "Films");
-
-            migrationBuilder.DropColumn(
-                name: "DirectorId",
-                table: "Films");
 
             migrationBuilder.RenameColumn(
                 name: "Year",
