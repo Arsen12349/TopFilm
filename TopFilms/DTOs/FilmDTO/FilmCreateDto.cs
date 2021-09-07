@@ -22,7 +22,7 @@ namespace TopFilms.Dtos
         public int Gross { get; set; }
 
         [Required]
-        public string Genres { get; set; }
+        public string Genre { get; set; }
 
         [Required]
         public int DirectorId { get; set; }
