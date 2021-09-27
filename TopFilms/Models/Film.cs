@@ -15,13 +15,13 @@ namespace TopFilms.Models
         public int Year { get; set; }
 
         [Required]
-        public string About { get; set; }
-
-        [Required]
         public int Budget { get; set; }
 
         [Required]
         public int Gross { get; set; }
+
+        [Required]
+        public string About { get; set; }
 
         [Required]
         public GenreEnum Genre { get; set; }

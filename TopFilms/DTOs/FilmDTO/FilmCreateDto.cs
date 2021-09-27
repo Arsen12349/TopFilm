@@ -13,13 +13,13 @@ namespace TopFilms.Dtos
         public int Year { get; set; }
 
         [Required]
-        public string About { get; set; }
-
-        [Required]
         public int Budget { get; set; }
 
         [Required]
         public int Gross { get; set; }
+
+        [Required]
+        public string About { get; set; }
 
         [Required]
         public string Genre { get; set; }

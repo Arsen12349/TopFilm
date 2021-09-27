@@ -11,7 +11,6 @@ namespace TopFilms.Data
 
         public TopFilmsContext(DbContextOptions<TopFilmsContext> opt) : base(opt) 
         {
-        
         }
     }   
 }
