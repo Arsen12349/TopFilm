@@ -3,12 +3,10 @@ using TopFilms.Models;
 
 namespace TopFilms.Data
 {
-    public interface IDirectorRepo
+    public interface IDirectorRepo : IBaseRepo<Director>
     {
         bool SaveChanges();
 
-        IEnumerable<Director> GetAll();
-        Director GetId(int id);
         void Create(Director cmd);
         void Update(Director cmd);
         void Delete(Director cmd);
