@@ -24,9 +24,8 @@ namespace TopFilms.Models
         public int Gross { get; set; }
 
         [Required]
-        public string Genres { get; set; } // can be [enum], how to do this ?
-
-      
+        public GenreEnum Genre { get; set; }
+  
         public int DirectorId { get; set; }
 
         public Director Director { get; set; }

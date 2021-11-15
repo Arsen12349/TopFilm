@@ -9,8 +9,10 @@ namespace TopFilms.Profiles
         public ActorProfile()
         {
             //Source -> Target
-            CreateMap<Actor, ActorDto>();
+            CreateMap<Actor, ActorDto>() ;
             CreateMap<ActorDto, Actor>();
+            //CreateMap<Actor, ActorDto>().ReverseMap;
+            
             //CreateMap<Actor, ActorReadDto>();
             //CreateMap<ActorUpdateDto, Actor>();
             //CreateMap<Actor, ActorUpdateDto>();
