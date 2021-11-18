@@ -38,6 +38,7 @@ namespace TopFilms
             services.AddScoped<IFilmRepo, FilmRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<IDirectorRepo, DirectorRepo>();
+            services.AddScoped<IBaseRepo, BaseRepo>();
 
         }
 
@@ -48,6 +49,13 @@ namespace TopFilms
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 

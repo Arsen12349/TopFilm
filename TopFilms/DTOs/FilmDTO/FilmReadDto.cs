@@ -11,11 +11,11 @@ namespace TopFilms.Dtos
 
         public int Year { get; set; }
 
-        public string About { get; set; }
-
         public int Budget { get; set; }
 
         public int Gross { get; set; }
+
+        public string About { get; set; }
 
         public string Genre { get; set; }
 
