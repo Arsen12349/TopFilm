@@ -36,7 +36,12 @@ namespace TopFilms.Data
             return _context.Directors.ToList();
         }
 
-        public Director GetId(int id)
+        public Director GetBaseId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Director GetDirectorId(int id)
         {
             return _context.Directors.FirstOrDefault(p => p.Id == id);
         }

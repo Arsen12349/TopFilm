@@ -8,6 +8,7 @@ namespace TopFilms.Data
         public DbSet<Film> Films { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Director> Directors { get; set; }
+        public DbSet<BaseDirector> BaseDirectors { get; set; }
 
         public TopFilmsContext(DbContextOptions<TopFilmsContext> opt) : base(opt) 
         {

@@ -38,6 +38,7 @@ namespace TopFilms
             services.AddScoped<IFilmRepo, FilmRepo>();
             services.AddScoped<IActorRepo, ActorRepo>();
             services.AddScoped<IDirectorRepo, DirectorRepo>();
+            services.AddScoped<IBaseRepo, BaseRepo>();
 
         }
 
